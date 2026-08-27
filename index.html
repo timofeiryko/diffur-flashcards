@@ -215,10 +215,8 @@ main {
 /* Filter presets bar */
 .filter-presets {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  scrollbar-width: thin;
 }
 
 .chip-btn {
@@ -890,13 +888,13 @@ main {
     <!-- Quick Presets -->
     <div class="filter-presets">
       <button class="chip-btn active" onclick="App.applyPreset('all', this)">🚀 Все карточки</button>
-      <button class="chip-btn" onclick="App.applyPreset('trio', this)">⭐ Базовое Трио (Экзамен 18-24б)</button>
+      <button class="chip-btn" onclick="App.applyPreset('trio', this)">⭐ Базовое Трио (18-24б)</button>
       <button class="chip-btn" onclick="App.applyPreset('integrals', this)">📐 Интегралы и замены</button>
-      <button class="chip-btn" onclick="App.applyPreset('odes', this)">⚙️ ОДУ 1-2 порядков и Клеро</button>
-      <button class="chip-btn" onclick="App.applyPreset('pdes', this)">🌊 УрЧП и первые интегралы</button>
-      <button class="chip-btn" onclick="App.applyPreset('theor', this)">📚 Теорминимум и теоремы</button>
-      <button class="chip-btn" onclick="App.applyPreset('blitz', this)">⚡ Блиц в уме (15 сек)</button>
-      <button class="chip-btn" onclick="App.applyPreset('errors', this)">🚨 Копилка ошибок</button>
+      <button class="chip-btn" onclick="App.applyPreset('odes', this)">ОДУ 1-2 порядков</button>
+      <button class="chip-btn" onclick="App.applyPreset('pdes', this)">УрЧП и первые интегралы</button>
+      <button class="chip-btn" onclick="App.applyPreset('theor', this)">Теорминимум</button>
+      <button class="chip-btn" onclick="App.applyPreset('blitz', this)">Блиц в уме</button>
+      <button class="chip-btn" onclick="App.applyPreset('errors', this)">Копилка ошибок</button>
     </div>
 
     <!-- Search Bar -->
@@ -1867,23 +1865,17 @@ const App = {
     if (preset === "all") {
       DATA.SECTIONS.forEach(s => this.selectedSections.add(s.n));
     } else if (preset === "trio") {
-      // Part 1: Sections 5, 6, 7, 8, 9, 10
-      [5, 6, 7, 8, 9, 10].forEach(n => this.selectedSections.add(n));
+      DATA.SECTIONS.filter(s => s.p === 1).forEach(s => this.selectedSections.add(s.n));
     } else if (preset === "integrals") {
-      // Part 0: Sections 1, 2, 3, 4
-      [1, 2, 3, 4].forEach(n => this.selectedSections.add(n));
+      DATA.SECTIONS.filter(s => s.p === 0).forEach(s => this.selectedSections.add(s.n));
     } else if (preset === "odes") {
-      // Part 2: Sections 11, 12, 13, 14, 15, 16, 17
-      [11, 12, 13, 14, 15, 16, 17].forEach(n => this.selectedSections.add(n));
+      DATA.SECTIONS.filter(s => s.p === 2).forEach(s => this.selectedSections.add(s.n));
     } else if (preset === "pdes") {
-      // Part 3: Sections 18, 19, 20
-      [18, 19, 20].forEach(n => this.selectedSections.add(n));
+      DATA.SECTIONS.filter(s => s.p === 3).forEach(s => this.selectedSections.add(s.n));
     } else if (preset === "theor") {
-      // Part 4: Sections 21, 22, 23, 24, 25, 26, 27
-      [21, 22, 23, 24, 25, 26, 27].forEach(n => this.selectedSections.add(n));
+      DATA.SECTIONS.filter(s => s.p === 4).forEach(s => this.selectedSections.add(s.n));
     } else if (preset === "blitz") {
-      // Part 5: Sections 28, 29, 30, 31
-      [28, 29, 30, 31].forEach(n => this.selectedSections.add(n));
+      DATA.SECTIONS.filter(s => s.p === 5).forEach(s => this.selectedSections.add(s.n));
     } else if (preset === "errors") {
       const state = this.getState();
       const errSet = new Set(state.errorPool || []);
