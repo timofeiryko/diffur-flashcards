@@ -48,7 +48,7 @@ $$\int x^n dx = \frac{x^{n+1}}{n+1} + C \quad (n \ne -1)$$
 $$\int \frac{dx}{x} = \ln|x| + C$$
 $$\int e^{kx} dx = \frac{1}{k} e^{kx} + C$$
 $$\int a^x dx = \frac{a^x}{\ln a} + C$$</p>
-<p>⚠️ <b>Ловушка на письмакe:</b> Забыть модуль под логарифмом ($\ln|x|$, а не $\ln x$) или потерять коэффициент $\frac{1}{k}$ при интегрировании $e^{kx}$.</p>""",
+<p>⚠️ <b>Ловушка на письмаке:</b> Забыть модуль под логарифмом ($\ln|x|$, а не $\ln x$) или потерять коэффициент $\frac{1}{k}$ при интегрировании $e^{kx}$.</p>""",
         "f": False
     },
     {
@@ -91,13 +91,29 @@ $$\int \frac{dx}{x^2 + a^2} = \frac{1}{a} \operatorname{arctg}\left(\frac{x}{a}\
     {
         "s": 2,
         "p": 0,
-        "q": r"Чему равен «высокий логарифм» $\int \frac{dx}{x^2 - a^2}$ и $\int \frac{dx}{a^2 - x^2}$?",
+        "q": r"Чему равен «высокий логарифм» $\int \frac{dx}{x^2 - a^2}$?",
         "a": r"""<p>💡 <b>Откуда берётся:</b> Разложение дроби на простейшие: $\frac{1}{x^2-a^2} = \frac{1}{2a}\left(\frac{1}{x-a} - \frac{1}{x+a}\right)$.</p>
-<p>📐 <b>Формулы:</b>
-$$\int \frac{dx}{x^2 - a^2} = \frac{1}{2a} \ln \left| \frac{x - a}{x + a} \right| + C$$
+<p>📐 <b>Формула:</b>
+$$\int \frac{dx}{x^2 - a^2} = \frac{1}{2a} \ln \left| \frac{x - a}{x + a} \right| + C$$</p>
+<p>⚙️ <b>Мнемоника:</b> Знаменатель начинается с $x \implies$ в числителе под логарифмом стоит $(x - a)$.</p>
+<p>🎯 <b>Пример:</b> $\int \frac{dx}{x^2 - 9} = \frac{1}{6}\ln\left|\frac{x-3}{x+3}\right| + C$.</p>""",
+        "f": False
+    },
+    {
+        "s": 2,
+        "p": 0,
+        "q": r"Чему равен интеграл $\int \frac{dx}{a^2 - x^2}$ и как не перепутать его с $\int \frac{dx}{x^2 - a^2}$?",
+        "a": r"""<p>📐 <b>Формула:</b>
 $$\int \frac{dx}{a^2 - x^2} = \frac{1}{2a} \ln \left| \frac{a + x}{a - x} \right| + C$$</p>
-<p>⚙️ <b>Мнемоника:</b> В числителе стоит тот множитель, с которого начинается разность квадратов: для $(x-a)(x+a)$ в числителе $(x-a)$; для $(a-x)(a+x)$ в числителе $(a+x)$.</p>
-<p>🎯 <b>Пример:</b> $\int \frac{dx}{x^2 - 4} = \frac{1}{4}\ln\left|\frac{x-2}{x+2}\right| + C$.</p>""",
+<p>💡 <b>Откуда берётся за 5 секунд:</b>
+$$\frac{1}{a^2 - x^2} = \frac{1}{2a}\left(\frac{1}{a+x} + \frac{1}{a-x}\right) \implies \frac{1}{2a}(\ln|a+x| - \ln|a-x|)$$
+<i>(Минус перед вторым логарифмом возник из-за производной от $-x$).</i></p>
+<p>🧠 <b>Сравнение двух высоких логарифмов:</b>
+<ul>
+<li>$\int \frac{dx}{x^2 - a^2} = \frac{1}{2a}\ln\left| \frac{x - a}{x + a} \right| + C$ <i>(начинается с $x \implies$ в числителе $x-a$)</i></li>
+<li>$\int \frac{dx}{a^2 - x^2} = \frac{1}{2a}\ln\left| \frac{a + x}{a - x} \right| + C$ <i>(начинается с $a \implies$ в числителе $a+x$)</i></li>
+</ul></p>
+<p>🎯 <b>Лайфхак:</b> $\int \frac{dx}{a^2 - x^2} = -\int \frac{dx}{x^2 - a^2} = -\frac{1}{2a}\ln\left|\frac{x-a}{x+a}\right| = \frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right|$.</p>""",
         "f": False
     },
     {
